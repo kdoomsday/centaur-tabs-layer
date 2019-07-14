@@ -23,6 +23,8 @@ This layer adds support for [[https://github.com/ema2159/centaur-tabs][Centaur T
   - Keyboard navigation out of the box
 
 * Install
+Install with `git clone https://github.com/kdoomsday/centaur-tabs-layer ~/.emacs.d/private/centaur-tabs`
+
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =centaur-tabs= to the existing =dotspacemacs-configuration-layers= list in this
 file.
