@@ -67,7 +67,7 @@ Each entry is either:
     (setq centaur-tabs-height 32)
     (setq centaur-tabs-set-icons t)
     (setq centaur-tabs-set-modified-marker t)
-    (setq centaur-tabs-modified-marker "!")
+    (setq centaur-tabs-modified-marker "⚠")
     (setq centaur-tabs-set-bar 'over)
     (setq centaur-tabs-style "rounded")
     (setq centaur-tabs-cycle-scope 'tabs)
