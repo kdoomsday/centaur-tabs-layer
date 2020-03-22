@@ -31,10 +31,10 @@ file.
 
 * Key bindings
 
-| Key Binding | Description |
-|-------------+-------------|
-| ~C-}~       | Next tab    |
-| ~C-{~       | Previus tab |
+| Key Binding | Description  |
+|-------------+--------------|
+| ~C-}~       | Next tab     |
+| ~C-{~       | Previous tab |
 
 # Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
 # Examples:
