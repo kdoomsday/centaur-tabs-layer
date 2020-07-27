@@ -68,12 +68,14 @@ Each entry is either:
     (setq centaur-tabs-set-icons t)
     (setq centaur-tabs-set-modified-marker t)
     (setq centaur-tabs-modified-marker "⚠")
-    (setq centaur-tabs-set-bar 'over)
-    (setq centaur-tabs-style "rounded")
+    (setq centaur-tabs-style "bar")
+    (setq centaur-tabs-set-bar 'left)
     (setq centaur-tabs-cycle-scope 'tabs)
     (centaur-tabs-group-by-projectile-project)
     :bind
     ("C-{" . centaur-tabs-backward)
-    ("C-}" . centaur-tabs-forward)) )
+    ("C-}" . centaur-tabs-forward)
+    ("C-M-{" . centaur-tabs-move-current-tab-to-left)
+    ("C-M-}" . centaur-tabs-move-current-tab-to-right) ) )
 
 ;;; packages.el ends here
