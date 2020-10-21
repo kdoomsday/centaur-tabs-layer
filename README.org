@@ -23,7 +23,7 @@ This layer adds support for [[https://github.com/ema2159/centaur-tabs][Centaur T
   - Keyboard navigation out of the box
 
 * Install
-Install with `git clone https://github.com/kdoomsday/centaur-tabs-layer ~/.emacs.d/private/centaur-tabs`
+Install with =git clone https://github.com/dalanicolai/centaur-tabs-layer ~/.emacs.d/private/centaur-tabs=
 
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =centaur-tabs= to the existing =dotspacemacs-configuration-layers= list in this
@@ -33,8 +33,8 @@ file.
 
 | Key Binding | Description  |
 |-------------+--------------|
-| ~C-}~       | Next tab     |
-| ~C-{~       | Previous tab |
+| =C-.=    | Next tab     |
+| =C-,=     | Previous tab |
 
 # Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
 # Examples:
