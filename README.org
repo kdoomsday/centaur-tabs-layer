@@ -21,7 +21,10 @@ This layer adds support for [[https://github.com/ema2159/centaur-tabs][Centaur T
 ** Features:
   - Pretty tabs via Centaur Tabs
   - Keyboard navigation out of the box
+  - Auto show/hide tabs
 
+  [[tabs-auto-show-hide.gif]]
+    
 * Install
 Install with =git clone https://github.com/dalanicolai/centaur-tabs-layer ~/.emacs.d/private/centaur-tabs=
 
