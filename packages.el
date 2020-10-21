@@ -63,19 +63,26 @@ Each entry is either:
   (use-package centaur-tabs
     :demand
     :config
-    (centaur-tabs-mode t)
+    ;; (centaur-tabs-mode t)
     (setq centaur-tabs-height 32)
     (setq centaur-tabs-set-icons t)
     (setq centaur-tabs-set-modified-marker t)
     (setq centaur-tabs-modified-marker "⚠")
     (setq centaur-tabs-style "bar")
-    (setq centaur-tabs-set-bar 'left)
+    (setq centaur-tabs-set-bar 'over)
     (setq centaur-tabs-cycle-scope 'tabs)
     (centaur-tabs-group-by-projectile-project)
-    :bind
-    ("C-{" . centaur-tabs-backward)
-    ("C-}" . centaur-tabs-forward)
-    ("C-M-{" . centaur-tabs-move-current-tab-to-left)
-    ("C-M-}" . centaur-tabs-move-current-tab-to-right) ) )
+    (define-key evil-normal-state-map (kbd "C-.") nil)
+    (define-key evil-motion-state-map (kbd "C-,") 'centaur-switch-tab)
+    (define-key evil-motion-state-map (kbd "C-.") 'centaur-switch-tab)
+    ))
+    ;; :bind
+    ;; (:map evil-motion-state-map
+	  ;;       ("C-." . centaur-tabs-forward)
+	  ;;       ("C-," . centaur-tabs-backward))
+    ;; (:map evil-normal-state-map
+	  ;;       ("C-." . centaur-tabs-forward)
+	  ;;       ("C-," . centaur-tabs-backward))))
+
 
 ;;; packages.el ends here
