@@ -75,7 +75,10 @@ Each entry is either:
     (define-key evil-normal-state-map (kbd "C-.") nil)
     (define-key evil-motion-state-map (kbd "C-,") 'centaur-switch-tab)
     (define-key evil-motion-state-map (kbd "C-.") 'centaur-switch-tab)
-    ))
+    (define-key evil-motion-state-map (kbd "<C-left>") 'centaur-switch-tab)
+    (define-key evil-motion-state-map (kbd "<C-right>") 'centaur-switch-tab)
+    (define-key evil-motion-state-map (kbd "<C-up>") 'centaur-switch-tab)
+    (define-key evil-motion-state-map (kbd "<C-down>") 'centaur-switch-tab)))
     ;; :bind
     ;; (:map evil-motion-state-map
 	  ;;       ("C-." . centaur-tabs-forward)

@@ -34,10 +34,14 @@ file.
 
 * Key bindings
 
-| Key Binding | Description  |
-|-------------+--------------|
-| =C-.=    | Next tab     |
-| =C-,=     | Previous tab |
+| Key Binding | Description    |
+|-------------+----------------|
+| =C-.=       | Next tab       |
+| =C-,=       | Previous tab   |
+| =C-right=   | Next tab       |
+| =C-left=    | Previous tab   |
+| =C-up=      | Next group     |
+| =C-down=    | Previous group |
 
 # Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
 # Examples:
