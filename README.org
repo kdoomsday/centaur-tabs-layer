@@ -38,10 +38,6 @@ file.
 |-------------+--------------------------------------|
 | =C-.=       | Next tab (incl. in insert state)     |
 | =C-,=       | Previous tab (incl. in insert state) |
-| =C-right=   | Next tab                             |
-| =C-left=    | Previous tab                         |
-| =C-up=      | Next group                           |
-| =C-down=    | Previous group                       |
 
 # Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
 # Examples:
