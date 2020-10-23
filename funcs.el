@@ -1,6 +1,7 @@
-(defun tabs-timer-initialize ()
-  
-  (setq tabs-timer (run-with-timer 3 nil (lambda () (centaur-tabs-local-mode 1)))))
+(defun tabs-timer-initialize (secs)
+  (setq tabs-timer (run-with-timer secs nil (lambda () (centaur-tabs-local-mode 1)))))
+
+(tabs-timer-initialize 3)
 
 (add-hook 'window-setup-hook 'tabs-timer-initialize)
 
@@ -19,7 +20,7 @@
         ((equal arg 'forward-group)
          (centaur-tabs-forward-group)))
   (centaur-tabs-local-mode 0)
-  (setq tabs-timer (run-with-timer 2 nil (lambda () (centaur-tabs-local-mode 1)))))
+  (setq tabs-timer (tabs-timer-initialize 2)))
 
 (defun centaur-tabs-forward-and-hide ()
   (interactive)
