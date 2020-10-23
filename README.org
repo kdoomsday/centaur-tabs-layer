@@ -11,12 +11,25 @@
 # TOC links should be GitHub style anchors.
 * Table of Contents                                        :TOC_4_gh:noexport:
 - [[#description][Description]]
+  - [[#warning-][WARNING !!]]
   - [[#features][Features:]]
 - [[#install][Install]]
 - [[#key-bindings][Key bindings]]
 
 * Description
 This layer adds support for [[https://github.com/ema2159/centaur-tabs][Centaur Tabs]] in spacemacs.
+
+** WARNING !!
+This layer rebinds 'C-m' and 'C-/' and for that sets
+=dotspacemacs-distinguish-gui-tab= to =t=.
+
+'C-m' generally is mapped to RET in the terminal, so that this rebinding will
+not work there. Also 'C-m' is still bound to different function in several modes
+(e.g. org-mode and spacemacs-buffer-mode).
+
+ Rebinding 'C-/' requires to modify the undo-tree-mode check function, causing
+the check to miss the custom undo system for certain (quite exotic) buffers, so
+that such buffers will use the undo-tree system instead.
 
 ** Features:
   - Pretty tabs via Centaur Tabs
@@ -38,6 +51,8 @@ file.
 |-------------+--------------------------------------|
 | =C-.=       | Next tab (incl. in insert state)     |
 | =C-,=       | Previous tab (incl. in insert state) |
+| =C-m=       | Group up (incl. in insert state)     |
+| =C-/=       | Group down (incl. in insert state)   |
 
 # Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
 # Examples:
