@@ -1,9 +1,11 @@
 (defun tabs-timer-initialize (secs)
   (setq tabs-timer (run-with-timer secs nil (lambda () (centaur-tabs-local-mode 1)))))
 
-(tabs-timer-initialize 3)
+(defun tabs-timer-hide ()
+  (tabs-timer-initialize 3))
 
-(add-hook 'window-setup-hook 'tabs-timer-initialize)
+(add-hook 'window-setup-hook 'tabs-timer-hide)
+(add-hook 'find-file-hook 'tabs-timer-hide)
 
 (defun centaur-tabs-switch-and-hide (arg)
   (cancel-timer tabs-timer)
