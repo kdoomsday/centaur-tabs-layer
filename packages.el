@@ -63,19 +63,83 @@ Each entry is either:
   (use-package centaur-tabs
     :demand
     :config
+    (setq dotspacemacs-distinguish-gui-tab t)
+    (global-undo-tree-mode)
     (centaur-tabs-mode t)
+    (centaur-tabs-local-mode t) ; not really necessary but it provides a nice
+                                ; 'Emacs is ready' indication
     (setq centaur-tabs-height 32)
     (setq centaur-tabs-set-icons t)
     (setq centaur-tabs-set-modified-marker t)
     (setq centaur-tabs-modified-marker "⚠")
     (setq centaur-tabs-style "bar")
-    (setq centaur-tabs-set-bar 'left)
+    (setq centaur-tabs-set-bar 'over)
     (setq centaur-tabs-cycle-scope 'tabs)
-    (centaur-tabs-group-by-projectile-project)
+    ;; (centaur-tabs-group-by-projectile-project)
+    (centaur-tabs-group-buffer-groups)
     :bind
-    ("C-{" . centaur-tabs-backward)
-    ("C-}" . centaur-tabs-forward)
-    ("C-M-{" . centaur-tabs-move-current-tab-to-left)
-    ("C-M-}" . centaur-tabs-move-current-tab-to-right) ) )
+    (:map evil-motion-state-map
+          ("C-," . centaur-tabs-backward-and-hide)
+          ("C-." . centaur-tabs-forward-and-hide)
+          ("C-m" . centaur-tabs-counsel-switch-group)
+          ("<C-up>" . centaur-tabs-backward-group-and-hide)
+          ("<C-down>" . centaur-tabs-forward-group-and-hide)
+          ("RET" . evil-ret)
+          ("C-/" . centaur-tabs-forward-group-and-hide))
+    (:map evil-normal-state-map
+          ("C-," . centaur-tabs-backward-and-hide)
+          ("C-." . centaur-tabs-forward-and-hide)
+          ("C-m" . centaur-tabs-counsel-switch-group)
+          ("<C-up>" . centaur-tabs-backward-group-and-hide)
+          ("<C-down>" . centaur-tabs-forward-group-and-hide)
+          ("RET" . evil-ret)
+          ("C-/" . centaur-tabs-forward-group-and-hide))
+    (:map evil-insert-state-map
+          ("C-," . centaur-tabs-backward-and-hide)
+          ("C-." . centaur-tabs-forward-and-hide)
+          ("C-m" . centaur-tabs-counsel-switch-group)
+          ("<C-up>" . centaur-tabs-backward-group-and-hide)
+          ("<C-down>" . centaur-tabs-forward-group-and-hide)
+          ("RET" . evil-ret)
+          ("C-/" . centaur-tabs-forward-group-and-hide))
+    (:map evil-evilified-state-map-original
+          ("C-," . centaur-tabs-backward-and-hide)
+          ("C-." . centaur-tabs-forward-and-hide)
+          ("C-m" . centaur-tabs-counsel-switch-group)
+          ("<C-up>" . centaur-tabs-backward-group-and-hide)
+          ("<C-down>" . centaur-tabs-forward-group-and-hide)
+          ("RET" . evil-ret)
+          ("C-/" . centaur-tabs-forward-group-and-hide))
+    ))
+
+(defun centaur-tabs/post-init-centaur-tabs ()
+"This post-init function fixes undo-tree mode not getting enabled.
+Rebinding 'C-/' prevents undo-tree-mode from getting enabled. So
+here we remove the 'rebinding check' from the original
+`turn-on-undo-tree-mode' function. Its docstring is still the
+original however."
+
+  (defun turn-on-undo-tree-mode (&optional print-message)
+    "Enable `undo-tree-mode' in the current buffer, when appropriate.
+Some major modes implement their own undo system, which should
+not normally be overridden by `undo-tree-mode'. This command does
+not enable `undo-tree-mode' in such buffers. If you want to force
+`undo-tree-mode' to be enabled regardless, use (undo-tree-mode 1)
+instead.
+
+The heuristic used to detect major modes in which
+`undo-tree-mode' should not be used is to check whether either
+the `undo' command has been remapped, or the default undo
+keybindings (C-/ and C-_) have been overridden somewhere other
+than in the global map. In addition, `undo-tree-mode' will not be
+enabled if the buffer's `major-mode' appears in
+`undo-tree-incompatible-major-modes'."
+    (interactive "p")
+    (if (or (key-binding [remap undo])
+	          (memq major-mode undo-tree-incompatible-major-modes))
+        (when print-message
+	        (message "Buffer does not support undo-tree-mode;\
+ undo-tree-mode NOT enabled"))
+      (undo-tree-mode 1))))
 
 ;;; packages.el ends here
